@@ -11,7 +11,7 @@ const Dictaphone = () => {
   const commands = [
     {
       command: 'Capture',
-      callback: (food) => setMessage(`Done`)
+      callback: () => setMessage(`Done`)
     }
   ]
 
@@ -24,7 +24,6 @@ const Dictaphone = () => {
   return (
     <div>
       <WebcamCapture></WebcamCapture>
- 
       <p>{message}</p>
       <p>{transcript}</p>
     </div>
