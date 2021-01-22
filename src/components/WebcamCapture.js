@@ -45,9 +45,15 @@ const videoConstraints = {
           width={1280}
           videoConstraints={videoConstraints}
         />
-        <button onClick={capture}>Capture photo</button>
-        <button onClick={SpeechRecognition.startListening}>Start</button>
-      <button onClick={SpeechRecognition.stopListening}>Stop</button>
+        <br />
+      <h1> Press start button and say capture </h1>
+
+        &nbsp;
+        <button onClick={capture} class="btn btn-primary">Capture photo</button>
+        &nbsp;
+        <button onClick={SpeechRecognition.startListening} class="btn btn-primary">Start</button>
+        &nbsp;
+      <button onClick={SpeechRecognition.stopListening} class="btn btn-primary">Stop</button>
         <div id='test1'></div>
       </>
     );

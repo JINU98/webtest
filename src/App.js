@@ -23,7 +23,9 @@ const Dictaphone = () => {
 
   return (
     <div>
+      <h1> Press start button and say capture </h1>
       <WebcamCapture></WebcamCapture>
+      <br />
       <p>{message}</p>
       <p>{transcript}</p>
     </div>
