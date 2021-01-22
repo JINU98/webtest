@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
-function App() {
+import WebcamCapture from './components/WebcamCapture.js'
+
+const Dictaphone = () => {
+
+  
+
+  const [message, setMessage] = useState('')
+  const commands = [
+    {
+      command: 'Capture',
+      callback: (food) => setMessage(`Done`)
+    }
+  ]
+
+  const { transcript } = useSpeechRecognition({ commands })
+
+  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
+    return null
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <WebcamCapture></WebcamCapture>
+ 
+      <p>{message}</p>
+      <p>{transcript}</p>
     </div>
-  );
+  )
 }
-
-export default App;
+export default Dictaphone
