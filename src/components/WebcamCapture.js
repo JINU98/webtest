@@ -38,7 +38,7 @@ const videoConstraints = {
     const [recordedChunks, setRecordedChunks] = React.useState([]);
 
     const handleStartCaptureClick = React.useCallback(() => {
-      alert('started')
+      // alert('started')
       setCapturing(true);
       mediaRecorderRef.current = new MediaRecorder(webcamRef.current.stream, {
         mimeType: "video/webm"
@@ -61,14 +61,14 @@ const videoConstraints = {
     );
 
     const handleStopCaptureClick = React.useCallback(() => {
-      alert('stoped')
+      // alert('stoped')
       mediaRecorderRef.current.stop();
       setCapturing(false);
     }, [mediaRecorderRef, webcamRef, setCapturing]);
   
     const handleDownload = React.useCallback(() => {
       if (recordedChunks.length) {
-        alert('sdsds')
+        // alert('sdsds')
         const blob = new Blob(recordedChunks, {
           type: "video/webm"
         });
