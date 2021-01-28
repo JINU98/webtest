@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 import WebcamCapture from './components/WebcamCapture.js'
+import Demo from './components/Demo.js'
 
 const Dictaphone = () => {
 
@@ -23,11 +24,15 @@ const Dictaphone = () => {
 
   return (
     <div>
-      <h1> Press start button and say capture </h1>
+      {/* <Demo></Demo> */}
+      <h1> Press space button and say capture </h1>
       <WebcamCapture></WebcamCapture>
       <br />
       <p>{message}</p>
       <p>{transcript}</p>
+
+
+
     </div>
   )
 }
