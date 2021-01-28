@@ -124,6 +124,8 @@ const videoConstraints = {
         />
         <br />
       <h1> Press space button and say capture </h1>
+      <h2> Press space button and say start to start recording press stop to stop recording </h2>
+
         &nbsp;
         <button onClick={capture} class="btn btn-primary">Capture photo</button>
         &nbsp;
