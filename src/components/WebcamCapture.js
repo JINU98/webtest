@@ -9,7 +9,7 @@ const videoConstraints = {
     height: 720,
     facingMode: "user"
   };
-   
+  var count=1;
   const WebcamCapture = () => {
 
     var photos=[];
@@ -27,10 +27,81 @@ const videoConstraints = {
           callback: () => handleStopCaptureClick()
 
         },
+        {
+          command:'select Media One',
+          callback: () =>{
+            document.getElementById("1").style.border="5px solid red"
+          }
+
+        },
+        {
+          command:'select media 2',
+          callback: () =>{
+            document.getElementById("2").style.border="5px solid red"
+          }
+
+        },
+        {
+          command:'select media 3',
+          callback: () =>{
+            document.getElementById("3").style.border="5px solid red"
+          }
+
+        },
+        {
+          command:'select media 4',
+          callback: () =>{
+            document.getElementById("4").style.border="5px solid red"
+          }
+
+        },
+        {
+          command:'select media five',
+          callback: () =>{
+            document.getElementById("5").style.border="5px solid red"
+          }
+
+        },
+        {
+          command:'select media vi',
+          callback: () =>{
+            document.getElementById("6").style.border="5px solid red"
+          }
+
+        },
+        {
+          command:'select media 7',
+          callback: () =>{
+            document.getElementById("7").style.border="5px solid red"
+          }
+
+        },
+        {
+          command:'select media 8',
+          callback: () =>{
+            document.getElementById("8").style.border="5px solid red"
+          }
+
+        },
+        {
+          command:'select media 9',
+          callback: () =>{
+            document.getElementById("9").style.border="5px solid red"
+          }
+
+        },
+        {
+          command:'select media 10',
+          callback: () =>{
+            document.getElementById("10").style.border="5px solid red"
+          }
+
+        },
+
 
       ]
   
-    const { transcript } = useSpeechRecognition({ commands })
+    useSpeechRecognition({ commands })
 
     const webcamRef = React.useRef(null);
     const mediaRecorderRef = React.useRef(null);
@@ -67,6 +138,7 @@ const videoConstraints = {
     }, [mediaRecorderRef, webcamRef, setCapturing]);
   
     const handleDownload = React.useCallback(() => {
+      
       if (recordedChunks.length) {
         // alert('sdsds')
         const blob = new Blob(recordedChunks, {
@@ -77,10 +149,12 @@ const videoConstraints = {
         const a = document.createElement("video");
         // alert(url)
         a.setAttribute("src",url)
-        a.setAttribute("width",400)
+        a.setAttribute("width",360)
+        a.setAttribute("height",180)
         a.setAttribute("controls","controls")
+        a.setAttribute("id",count++)
         a.style.margin="10px";
-        document.getElementById('lets').appendChild(a);
+        document.getElementById('test1').appendChild(a);
         // a.download = "react-webcam-stream-capture.webm";
         // a.click();
         // window.URL.revokeObjectURL(url);
@@ -92,8 +166,18 @@ const videoConstraints = {
     const capture = React.useCallback(
       () => {
         const imageSrc = webcamRef.current.getScreenshot();
-        photos=photos.concat(<img height="200" width="400" style={{ margin:"10px" }} src={imageSrc} alt="sdsds"/>)
-        ReactDOM.render(photos, document.getElementById('test1'));
+        const b = document.createElement("img");
+        b.setAttribute("src",imageSrc)
+        b.setAttribute("height",200)
+        b.setAttribute("width",400)
+        b.setAttribute("id",count++)
+        b.setAttribute("alt","sdsd")
+        b.style.margin="10px";
+        document.getElementById('test1').appendChild(b);
+        // document.getElementById('test1').appendChild(b);
+
+        // photos=photos.concat(<img height="200" width="400" id={count++} style={{ margin:"10px" }} src={imageSrc} alt="sdsds"/>)
+        // ReactDOM.render(photos, document.getElementById('test1'));
       },
       [webcamRef]
     );
@@ -110,16 +194,14 @@ const videoConstraints = {
             SpeechRecognition.stopListening()
           }
         }
-    
-
     return (
       <>
         <Webcam
           audio={false}
-          height={720}
+          height={200}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          width={1280}
+          width={400}
           videoConstraints={videoConstraints}
         />
         <br />
@@ -139,8 +221,10 @@ const videoConstraints = {
         <button onClick={handleStartCaptureClick}>Start Capture</button>
       )}
       {recordedChunks.length > 0 ? handleDownload() : null }
-        <div id='test1'></div>
-        <div id='lets' controls></div>
+        <div id='test1'>
+          For Selecting Media say say select media then refernce number e.g <b>select media one </b><br/>
+
+        </div>
 
       </>
     );

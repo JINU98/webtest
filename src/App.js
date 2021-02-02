@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 import WebcamCapture from './components/WebcamCapture.js'
-import Demo from './components/Demo.js'
+// import Demo from './components/Demo.js'
 
 const Dictaphone = () => {
 
